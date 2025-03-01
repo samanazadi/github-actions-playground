@@ -1,0 +1,7 @@
+on: workflow_dispatch
+jobs:
+  runner-default:
+    runs-on: ubuntu-latest
+    steps:
+      - name: go-version
+        run: go version
