@@ -4,5 +4,6 @@ jobs:
   runner-default:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-go@v5
       - name: go-version
         run: go version
