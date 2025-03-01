@@ -1,3 +1,4 @@
+name: Go Workflow
 on: workflow_dispatch
 jobs:
   runner-default:
