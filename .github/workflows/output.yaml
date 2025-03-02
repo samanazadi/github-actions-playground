@@ -15,7 +15,6 @@ jobs:
           echo "${{ env.PORT }}"
           echo "PORT: $PORT"
   deploy:
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
