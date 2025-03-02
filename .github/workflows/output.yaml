@@ -1,4 +1,6 @@
 on: push
+env:
+  ENV1: VAL1
 jobs:
   output:
     runs-on: ubuntu-latest
@@ -8,3 +10,4 @@ jobs:
         id: my_id
       - name: env
         run: echo "${{ toJSON(env) }}"
+      - run: echo "${{ toJSON(github) }}"
