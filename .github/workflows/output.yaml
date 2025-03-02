@@ -1,13 +1,28 @@
+name: Output
 on: push
 env:
-  ENV1: VAL1
+  MONGODB_DB_NAME: MY_DB
 jobs:
-  output:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      MONGODB_USERNAME: MY_USERNAME
+      PORT: 8080
+    steps:
+      - run: |
+          echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
+          echo "MONGODB_USERNAME: $MONGODB_USERNAME"
+          echo "${{ env.PORT }}"
+          echo "PORT: $PORT"
+  deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
-      - run: echo $GITHUB_ACTION
-        name: Hello!
-        id: my_id
-      - name: env
-        run: echo "${{ toJSON(env) }}"
-      - run: echo "${{ toJSON(github) }}"
+      - name: Output information
+        env:
+          PORT: 3000
+        run: |
+          echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
+          echo "MONGODB_USERNAME: $MONGODB_USERNAME"
+          echo "${{ env.PORT }}"
+          echo "PORT: $PORT"
